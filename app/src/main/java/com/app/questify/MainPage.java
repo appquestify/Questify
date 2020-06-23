@@ -22,11 +22,26 @@ public class MainPage extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+        ImageView settings = (ImageView) findViewById(R.id.settings);
+        all_question.setClickable(true);
+        all_question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getBaseContext(),   SettingsMain.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     public void onButtonClick(View v){
-        Intent myIntent = new Intent(getBaseContext(),   AllQuestions.class);
-        startActivity(myIntent);
+        ImageView view = (ImageView) findViewById(v.getId());
+        if (v.getId() == R.id.imgAllQuestion ) {
+            Intent myIntent = new Intent(getBaseContext(), AllQuestions.class);
+            startActivity(myIntent);
+        } else if (v.getId() == R.id.settings) {
+            Intent myIntent = new Intent(getBaseContext(), SettingsMain.class);
+            startActivity(myIntent);
+        }
     }
 
 }
